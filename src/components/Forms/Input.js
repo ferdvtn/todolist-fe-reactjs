@@ -7,12 +7,12 @@ function Input(props) {
     <div>
       <input
         type="text"
-        className="border border-slate-500 px-3 text-slate-500"
+        className="border border-gray-500 px-3 text-gray-500 rounded"
         onChange={(e) => setTodo(e.target.value)}
       />
       <button
         type="submit"
-        className="bg-blue-200 text-blue-400 border border-blue-400 px-3 ml-1"
+        className="bg-gray-300 text-gray-700 border border-gray-700 px-3 ml-1 rounded"
         onClick={() => props.onSubmit(todo)}
       >
         Submit
