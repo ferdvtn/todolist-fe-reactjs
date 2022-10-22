@@ -40,12 +40,21 @@ function App() {
     setTodos([...todos]);
   };
 
+  const completedTodo = () => {
+    const completed = todos.filter((v) => v.isDone).length;
+
+    return `Completed ${completed} of ${todos.length}`;
+  };
+
   return (
     <div>
       <div className="relative min-h-screen bg-gray-50 p-5">
         <div className="mb-20">
           <div className="mx-auto mb-5 w-full rounded-md bg-gray-100 p-5 shadow-xl">
-            <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
+              <p className="text-sm">{completedTodo()}</p>
+            </div>
             <ListTodo
               todos={todos}
               onDelete={onDelete}

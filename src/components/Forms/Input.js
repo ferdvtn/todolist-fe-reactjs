@@ -24,7 +24,7 @@ function Input(props) {
           type="submit"
           className="ml-1 rounded border border-gray-700 bg-gray-300 px-3 text-gray-700"
         >
-          {props.isEdit.edit ? "Update" : "Add"}
+          {props.isEdit.edit ? "Update" : "Store"}
         </button>
       </form>
     </div>
