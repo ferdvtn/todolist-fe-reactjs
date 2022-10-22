@@ -1,21 +1,29 @@
 import React from "react";
 import BtnDelete from "./BtnDelete";
 import BtnEdit from "./BtnEdit";
+import BtnDone from "./BtnDone";
 
 function ListTodo(props) {
   return (
-    <ul className="">
+    <ul>
       {props.todos.map((todo, index) => (
         <li
           key={index}
-          className={`group/li mt-3 box-content flex justify-between rounded-md py-1 px-2 text-slate-600 hover:cursor-pointer hover:bg-slate-300 ${
-            index % 2 === 0 ? "bg-slate-200" : "border"
-          }
+          className={`group/li mt-3 flex justify-between rounded-md border py-1 px-2 text-slate-600 hover:bg-slate-300
+            ${index % 2 === 0 ? "bg-slate-200" : "border"}
+            ${todo.isDone ? "border-gray-500 line-through" : ""}
           `}
         >
           <div className="flex-grow">{todo.value}</div>
-          <BtnEdit index={index} onEdit={props.onEdit} />
-          <BtnDelete index={index} onDelete={props.onDelete} />
+          <div className="flex space-x-1">
+            <BtnDone
+              index={index}
+              onDoneToggle={props.onDoneToggle}
+              isDone={todo.isDone}
+            />
+            <BtnEdit index={index} onEdit={props.onEdit} />
+            <BtnDelete index={index} onDelete={props.onDelete} />
+          </div>
         </li>
       ))}
     </ul>

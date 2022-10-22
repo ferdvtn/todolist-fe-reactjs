@@ -2,7 +2,7 @@ function BtnEdit(props) {
   return (
     <div
       onClick={() => props.onEdit(props.index)}
-      className="group/li-div invisible flex items-center rounded px-2 hover:bg-yellow-100 group-hover/li:visible"
+      className="group/li-div invisible flex items-center rounded px-2 hover:cursor-pointer hover:bg-yellow-100 group-hover/li:visible"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

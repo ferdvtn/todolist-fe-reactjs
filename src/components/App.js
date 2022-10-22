@@ -10,7 +10,10 @@ function App() {
 
   const onSubmit = (value) => {
     if (isEdit.edit) {
-      todos[isEdit.index] = { isDone: false, value: value };
+      todos[isEdit.index] = {
+        isDone: todos[isEdit.index].isDone,
+        value: value,
+      };
       setIsEdit({ edit: false, index: null });
     } else {
       todos.unshift({
@@ -32,13 +35,23 @@ function App() {
     setTodo(todos[index].value);
   };
 
+  const onDoneToggle = (index) => {
+    todos[index].isDone = !todos[index].isDone;
+    setTodos([...todos]);
+  };
+
   return (
     <div>
       <div className="relative min-h-screen bg-gray-50 p-5">
         <div className="mb-20">
           <div className="mx-auto mb-5 w-full rounded-md bg-gray-100 p-5 shadow-xl">
             <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
-            <ListTodo todos={todos} onDelete={onDelete} onEdit={onEdit} />
+            <ListTodo
+              todos={todos}
+              onDelete={onDelete}
+              onEdit={onEdit}
+              onDoneToggle={onDoneToggle}
+            />
           </div>
           <Copyright />
         </div>

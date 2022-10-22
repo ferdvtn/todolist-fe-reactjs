@@ -2,7 +2,7 @@ function BtnDelete(props) {
   return (
     <div
       onClick={() => props.onDelete(props.index)}
-      className="group/li-div invisible flex items-center rounded px-2 hover:bg-red-100 group-hover/li:visible"
+      className="group/li-div invisible flex items-center rounded px-2 hover:cursor-pointer hover:bg-red-100 group-hover/li:visible"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
