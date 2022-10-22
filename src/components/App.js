@@ -6,17 +6,19 @@ import Copyright from "./Others/Copyright";
 function App() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-  const [isEdit, setIsEdit] = useState(false);
-  const [editIndex, setEditIndex] = useState(null);
+  const [isEdit, setIsEdit] = useState({ edit: false, index: null });
 
-  const onSubmit = (value, index) => {
-    if (isEdit) {
-      todos[index] = value;
-      setIsEdit(false);
-      setEditIndex(null);
+  const onSubmit = (value) => {
+    if (isEdit.edit) {
+      todos[isEdit.index] = { isDone: false, value: value };
+      setIsEdit({ edit: false, index: null });
     } else {
-      todos.unshift(value);
+      todos.unshift({
+        isDone: false,
+        value: value,
+      });
     }
+
     setTodos([...todos]);
   };
 
@@ -26,9 +28,8 @@ function App() {
   };
 
   const onEdit = (index) => {
-    setIsEdit(true);
-    setEditIndex(index);
-    setTodo(todos[index]);
+    setIsEdit({ edit: true, index: index });
+    setTodo(todos[index].value);
   };
 
   return (
@@ -49,7 +50,6 @@ function App() {
             setTodo={setTodo}
             onSubmit={onSubmit}
             isEdit={isEdit}
-            editIndex={editIndex}
           />
         </div>
       </div>

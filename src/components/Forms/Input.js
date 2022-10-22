@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Input(props) {
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (props.todo.length > 0) {
-      props.onSubmit(props.todo, props.editIndex);
+      props.onSubmit(props.todo);
       props.setTodo("");
     }
   };
@@ -24,7 +24,7 @@ function Input(props) {
           type="submit"
           className="ml-1 rounded border border-gray-700 bg-gray-300 px-3 text-gray-700"
         >
-          {props.isEdit ? "Update" : "Add"}
+          {props.isEdit.edit ? "Update" : "Add"}
         </button>
       </form>
     </div>

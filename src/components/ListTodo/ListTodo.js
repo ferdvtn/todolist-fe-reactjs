@@ -13,7 +13,7 @@ function ListTodo(props) {
           }
           `}
         >
-          <div className="flex-grow">{todo}</div>
+          <div className="flex-grow">{todo.value}</div>
           <BtnEdit index={index} onEdit={props.onEdit} />
           <BtnDelete index={index} onDelete={props.onDelete} />
         </li>
