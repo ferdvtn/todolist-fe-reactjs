@@ -22,12 +22,19 @@ function App() {
   return (
     <div>
       <div className="relative min-h-screen bg-gray-50 p-5">
-        <div className="mx-auto mb-14 w-full rounded-md bg-gray-100 p-5 shadow-lg">
-          <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
-          <ListTodo todos={todos} onDelete={onDelete} onEdit={onEdit} />
+        <div className="mb-20">
+          <div className="mx-auto mb-5 w-full rounded-md bg-gray-100 p-5 shadow-lg">
+            <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
+            <ListTodo todos={todos} onDelete={onDelete} onEdit={onEdit} />
+          </div>
+          <div className="text-center font-serif  text-slate-400">
+            <small>
+              &copy; Copyright {new Date().getFullYear()} by Ahmad Ferdian
+            </small>
+          </div>
         </div>
       </div>
-      <div className="fixed bottom-3 w-full px-5">
+      <div className="fixed bottom-10 w-full px-5">
         <div className="mx-auto rounded-md bg-gray-100 p-3 shadow-lg">
           <Input onSubmit={onSubmit} />
         </div>
