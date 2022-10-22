@@ -3,20 +3,32 @@ import React, { useState } from "react";
 function Input(props) {
   const [todo, setTodo] = useState("");
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (todo.length > 0) {
+      props.onSubmit(todo);
+      setTodo("");
+    }
+  };
+
   return (
     <div>
-      <input
-        type="text"
-        className="border border-gray-500 px-3 text-gray-500 rounded"
-        onChange={(e) => setTodo(e.target.value)}
-      />
-      <button
-        type="submit"
-        className="bg-gray-300 text-gray-700 border border-gray-700 px-3 ml-1 rounded"
-        onClick={() => props.onSubmit(todo)}
-      >
-        Submit
-      </button>
+      <form onSubmit={onSubmit} className="flex">
+        <input
+          autoFocus={true}
+          type="text"
+          className="mr-1 flex-grow rounded border border-gray-500 px-3 text-gray-500"
+          onChange={(e) => setTodo(e.target.value)}
+          value={todo}
+        />
+        <button
+          type="submit"
+          className="ml-1 rounded border border-gray-700 bg-gray-300 px-3 text-gray-700"
+        >
+          Add
+        </button>
+      </form>
     </div>
   );
 }
