@@ -50,7 +50,7 @@ function App() {
     <div>
       <div className="relative min-h-screen bg-gray-50 p-5">
         <div className="mb-20">
-          <div className="mx-auto mb-5 w-full rounded-md bg-gray-100 p-5 shadow-xl">
+          <div className="mx-auto mb-5 w-full rounded-md bg-gray-100 p-5 shadow-xl md:w-2/3">
             <div className="flex items-center justify-between">
               <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
               <p className="text-sm">{completedTodo()}</p>
@@ -66,7 +66,7 @@ function App() {
         </div>
       </div>
       <div className="fixed bottom-10 w-full px-5">
-        <div className="mx-auto rounded-md bg-gray-100 p-3 shadow-xl">
+        <div className="mx-auto rounded-md bg-gray-100 p-3 shadow-xl md:w-2/3">
           <Input
             todo={todo}
             setTodo={setTodo}
