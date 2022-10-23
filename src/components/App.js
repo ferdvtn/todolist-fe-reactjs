@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./Forms/Input";
 import ListTodo from "./ListTodo/ListTodo";
 import Copyright from "./Others/Copyright";
@@ -7,6 +7,13 @@ function App() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [isEdit, setIsEdit] = useState({ edit: false, index: null });
+
+  useEffect(() => {
+    const localTodos = localStorage.getItem("todos");
+    if (localTodos != null) {
+      setTodos(JSON.parse(localTodos));
+    }
+  }, []);
 
   const onSubmit = (value) => {
     if (isEdit.edit) {
@@ -22,12 +29,12 @@ function App() {
       });
     }
 
-    setTodos([...todos]);
+    saveTodos();
   };
 
   const onDelete = (index) => {
     todos.splice(index, 1);
-    setTodos([...todos]);
+    saveTodos();
   };
 
   const onEdit = (index) => {
@@ -37,13 +44,18 @@ function App() {
 
   const onDoneToggle = (index) => {
     todos[index].isDone = !todos[index].isDone;
-    setTodos([...todos]);
+    saveTodos();
   };
 
   const completedTodo = () => {
     const completed = todos.filter((v) => v.isDone).length;
 
     return `Completed ${completed} of ${todos.length}`;
+  };
+
+  const saveTodos = () => {
+    setTodos([...todos]);
+    localStorage.setItem("todos", JSON.stringify(todos));
   };
 
   return (
