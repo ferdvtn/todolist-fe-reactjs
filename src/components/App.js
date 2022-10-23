@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Input from "./Forms/Input";
+import CompletedLabel from "./ListTodo/CompletedLabel";
 import ListTodo from "./ListTodo/ListTodo";
 import Copyright from "./Others/Copyright";
 
@@ -47,12 +48,6 @@ function App() {
     saveTodos();
   };
 
-  const completedTodo = () => {
-    const completed = todos.filter((v) => v.isDone).length;
-
-    return `Completed ${completed} of ${todos.length}`;
-  };
-
   const saveTodos = () => {
     setTodos([...todos]);
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -65,7 +60,9 @@ function App() {
           <div className="mx-auto mb-5 w-full rounded-md bg-gray-100 p-5 shadow-xl md:w-2/3">
             <div className="flex items-center justify-between">
               <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
-              <p className="text-sm">{completedTodo()}</p>
+              <p className="text-sm">
+                <CompletedLabel todos={todos} />
+              </p>
             </div>
             <ListTodo
               todos={todos}
