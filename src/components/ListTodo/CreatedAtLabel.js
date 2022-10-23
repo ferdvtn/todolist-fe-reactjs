@@ -1,8 +1,10 @@
 function CreatedAtLabel(props) {
   return (
-    <p className="invisible text-xs group-hover/li:visible">
-      {props.createdAt}
-    </p>
+    <div>
+      <p className="invisible text-xs group-hover/li:visible">
+        {props.createdAt}
+      </p>
+    </div>
   );
 }
 

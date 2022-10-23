@@ -13,6 +13,21 @@ function App() {
     const localTodos = localStorage.getItem("todos");
     if (localTodos != null) {
       setTodos(JSON.parse(localTodos));
+    } else {
+      const date = new Date();
+      const createdAt = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`;
+      setTodos([
+        {
+          isDone: false,
+          value: "Create more task",
+          createdAt: createdAt,
+        },
+        {
+          isDone: true,
+          value: "Read some books",
+          createdAt: createdAt,
+        },
+      ]);
     }
   }, []);
 
@@ -62,9 +77,7 @@ function App() {
           <div className="mx-auto mb-5 w-full rounded-md bg-gray-100 p-5 shadow-xl md:w-2/3">
             <div className="flex items-center justify-between">
               <h1 className="text-2xl font-bold text-gray-700">Todolist App</h1>
-              <p className="text-sm">
-                <CompletedLabel todos={todos} />
-              </p>
+              <CompletedLabel todos={todos} />
             </div>
             <ListTodo
               todos={todos}

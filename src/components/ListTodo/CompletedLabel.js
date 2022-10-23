@@ -1,7 +1,7 @@
 function CompletedLabel(props) {
   const completedTodo = props.todos.filter((todo) => todo.isDone).length;
   return (
-    <div className="flex items-center">
+    <div className="flex items-center text-sm">
       {completedTodo === props.todos.length ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ function CompletedLabel(props) {
           />
         </svg>
       ) : (
-        ""
+        <div></div>
       )}
 
       <p className="ml-1">
