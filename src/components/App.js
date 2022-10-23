@@ -24,9 +24,11 @@ function App() {
       };
       setIsEdit({ edit: false, index: null });
     } else {
+      const date = new Date();
       todos.unshift({
         isDone: false,
         value: value,
+        createdAt: `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`,
       });
     }
 

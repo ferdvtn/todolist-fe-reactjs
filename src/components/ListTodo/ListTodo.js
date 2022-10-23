@@ -2,6 +2,7 @@ import React from "react";
 import BtnDelete from "./BtnDelete";
 import BtnEdit from "./BtnEdit";
 import BtnDone from "./BtnDone";
+import CreatedAtLabel from "./CreatedAtLabel";
 
 function ListTodo(props) {
   return (
@@ -15,7 +16,8 @@ function ListTodo(props) {
           `}
         >
           <div className="flex-grow">{todo.value}</div>
-          <div className="flex space-x-1">
+          <div className="flex items-center space-x-1">
+            <CreatedAtLabel createdAt={todo.createdAt} />
             <BtnDone
               index={index}
               onDoneToggle={props.onDoneToggle}
